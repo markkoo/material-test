@@ -1,0 +1,149 @@
+<div class="flexArea">
+    <div class="flexLeftArea">
+        <button mat-icon-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="flexRightArea">
+        <header>
+            <mat-form-field appearance="outline" class="type">
+                <mat-label>Select Type</mat-label>
+                <mat-select placeholder="" value="company">
+                    <mat-option value="company">Company</mat-option>
+                    <mat-option value="individu">Individu</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="saveButton">
+                <button mat-raised-button color="accent">Save</button>
+            </div>
+        </header>
+        <section>
+            <div class="companyForm">
+                <div class="headerTitle">
+                    <span>Company</span>
+                </div>
+
+                <div class="col2Grid">
+
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Name" required>
+                        <mat-error>asd</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Registration Number">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Email">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Fax">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <textarea matInput placeholder="Phone"></textarea>
+                        <mat-icon matSuffix matTooltipClass="preLine" matTooltip="Info about the action
+                        a tooltip when focused o">help_outline</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <textarea matInput placeholder="Address"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-select placeholder="Country">
+                            <mat-option value="option">Malaysia</mat-option>
+                            <mat-option value="option">Singapore</mat-option>
+                            <mat-option value="option">Taiwan</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-select placeholder="State">
+                            <mat-option value="option">Johor</mat-option>
+                            <mat-option value="option">Johor</mat-option>
+                            <mat-option value="option">Johor</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Postcode">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="contactPersonForm">
+                <div class="headerTitle">
+                    <span>Contact Person</span>
+                </div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Placeholder" [disabled]="true">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fax</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <textarea matInput placeholder="Placeholder" [disabled]="true"></textarea>
+                    <mat-icon matSuffix>help_outline</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Department</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Position</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+            </div>
+            <div class="shippingForm">
+                <div class="headerTitle">
+                    <span>Shipping</span>
+                </div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="Placeholder"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <mat-select placeholder="Country">
+                        <mat-option value="option">Malaysia</mat-option>
+                        <mat-option value="option">Singapore</mat-option>
+                        <mat-option value="option">Taiwan</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>State</mat-label>
+                    <mat-select placeholder="State">
+                        <mat-option value="option">Johor</mat-option>
+                        <mat-option value="option">Johor</mat-option>
+                        <mat-option value="option">Johor</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Postcode</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+
+                <mat-checkbox>Use This for Shipping</mat-checkbox>
+            </div>
+        </section>
+    </div>
+</div>

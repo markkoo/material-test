@@ -14,8 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-    ChipAutocompleteComponent,
-    TestComponent
+    ChipAutocompleteComponent
   ],
   imports: [
     BrowserModule,

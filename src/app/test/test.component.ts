@@ -21,6 +21,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
   { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for soucing' },
   { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for soucing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for soucing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for soucing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for soucing' },
+  { partNumber: '10+20+30ABC', description: 'ABC BCA', UOM: 'PC', unitPrice: 10.80, qty: 6, status: 'waiting for processing' },
 ];
 
 @Component({

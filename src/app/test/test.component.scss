@@ -1,125 +1,279 @@
+@import "~@angular/material/theming";
+
 :host {
-    display: block;
-    transform: translate(0);
+  display: block;
+  transform: translate(0);
+  height:100%;
 }
 
+.fixedArea{
+  position: fixed;
+  background: white;
+  top:0;
+  left: 0;
+  width:100%;
+  height:100%;
+  overflow-y: auto;
+}
+
+$blue: #536dfe;
+$green: #b2ff59;
+$orange: #ffab40;
+$red: #ff5252;
+
 mat-card {
-    padding: 0;
+  padding: 0;
+}
+
+%oneThird {
+  header {
+    padding: 0 16px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    button {
+      margin-right: 10px;
+    }
+    .title {
+      margin: 0;
+    }
+  }
+  section {
+    height: 309px; //220px
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
 }
 
 .bodyArea {
-    padding: 16px 16px;
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        grid-gap: 16px;
-        grid-template-areas: "customerInfoArea historyArea" "itemsArea itemsArea";
-        .customerInfoArea {
-            grid-area: customerInfoArea;
-            header {
-                padding: 8px 16px;
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid rgba(0, 0, 0, .12);
-                .title {
-                    margin: 0 0 0 10px;
-                }
-            }
-            section {
-                padding: 8px 16px 16px;
-                .mat-form-field {
-                    width: 100%;
-                }
-                dl {
-                    display: flex;
-                    flex-wrap: wrap;
-                    dt {
-                        flex: 40%;
-                    }
-                    dd {
-                        flex: 60%;
-                    }
-                }
-            }
-        }
-        .historyArea {
-            grid-area: historyArea;
-            header {
-                padding: 8px 16px;
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid rgba(0, 0, 0, .12);
-                height: 40px;
-                .title {
-                    margin: 0;
-                }
-            }
-            section {
-                min-height: 210px;
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    tr {
-                        &:last-child td {
-                            border-bottom: none;
-                        }
-                        td {
-                            border-bottom: 1px solid rgba(0, 0, 0, .12);
-                            padding: 0px 16px;
-                            font-size: 14px;
-                            &:last-child {
-                                text-align: right;
-                            }
-                            &.noData {
-                                text-align: center;
-                                p {
-                                    margin-top: 10px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .itemsArea {
-            grid-area: itemsArea;
-            header {
-                padding: 8px 16px;
-                display: flex;
-                align-items: center;
-                border-bottom: 1px solid rgba(0, 0, 0, .12);
-                .title {
-                    margin: 0 0 0 10px;
-                }
-            }
-            section {
-                table {
-                    width: 100%;
-                    tr {
-                        height: auto;
-                        th {
-                            padding-top: 8px;
-                            padding-bottom: 8px;
-                        }
-                        td {
-                            padding-top: 6px;
-                            padding-bottom: 6px;
-                            font-size: 14px;
-                            &.input {
-                                padding-top: 2px;
-                                padding-bottom: 2px;
-                                input {
-                                    height: 26px;
-                                    text-align: center;
-                                    width: 41px;
-                                    border: 1px solid rgba(0, 0, 0, .12);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+  padding: 16px 32px 64px 16px;
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 16px;
+    grid-template-areas: "customerInfoArea shippingArea historyArea" "itemsArea itemsArea itemsArea" "remarkArea confirmArea confirmArea";
+  }
+}
+
+.customerInfoArea {
+  grid-area: customerInfoArea;
+  @extend %oneThird;
+  section {
+    padding: 16px;
+    .mat-form-field {
+      width: 100%;
     }
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      dt {
+        flex: 30%;
+      }
+      dd {
+        flex: 70%;
+      }
+    }
+  }
+}
+.shippingArea {
+  grid-area: shippingArea;
+  @extend %oneThird;
+  header {
+    justify-content: space-between;
+  }
+  section {
+    padding: 16px 16px 16px;
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      dt {
+        flex: 30%;
+      }
+      dd {
+        flex: 70%;
+        &.preLine {
+          white-space: pre-line;
+        }
+      }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0 16px;
+      margin-top: 26px;
+      *:nth-child(1) {
+        grid-column-end: span 2;
+      }
+    }
+  }
+}
+.historyArea {
+  grid-area: historyArea;
+  @extend %oneThird;
+  section {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      tr {
+        &:last-child td {
+          border-bottom: none;
+        }
+        td {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          padding: 0px 16px;
+          font-size: 14px;
+          &:last-child {
+            text-align: right;
+          }
+          &.noData {
+            text-align: center;
+            p {
+              margin-top: 10px;
+            }
+          }
+          mat-icon {
+            color: gray;
+            &:hover {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.itemsArea {
+  grid-area: itemsArea;
+  header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    .leftArea {
+      padding: 8px 8px 8px 16px;
+      display: flex;
+      align-items: center;
+      .title {
+        margin: 0 0 0 10px;
+      }
+    }
+    .rightArea {
+      padding: 0px 16px 0px 8px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .option {
+        align-self: center;
+        margin-left: 16px;
+        display: flex;
+        width: 64px;
+        height: 44px;
+        flex: 0 0 64px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: $orange;
+        color: white;
+        @include mat-elevation(2);
+        cursor: pointer;
+        span {
+          font-size: 10px;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+  section.table {
+    max-height: 50vh;
+    overflow-y: auto;
+    table {
+      width: 100%;
+      tr {
+        height: auto;
+        th {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+        td {
+          padding-top: 6px;
+          padding-bottom: 6px;
+          font-size: 14px;
+          &.input {
+            padding-top: 2px;
+            padding-bottom: 2px;
+            input {
+              height: 26px;
+              text-align: center;
+              width: 41px;
+              border: 1px solid rgba(0, 0, 0, 0.12);
+            }
+          }
+          [class^="status"] {
+            padding: 4px 2px;
+            display: inline;
+          }
+          .status-red {
+            background: $red;
+            color: white;
+          }
+          .status-blue {
+            background: $blue;
+            color: white;
+          }
+          .delete {
+            color: gray;
+            cursor: pointer;
+            &:hover {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+  section.footer {
+    display: flex;
+    justify-content: flex-end;
+    dl {
+      width: 400px;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 15px;
+      line-height: 1.5;
+      padding: 8px 32px;
+      width: 200px;
+      dt {
+        flex: 0 0 50%;
+        text-align: right;
+      }
+      dd {
+        flex: 0 0 60%;
+        flex: 0 0 50%;
+        text-align: right;
+      }
+      .bold {
+        font-weight: 700;
+        font-size: 17px;
+      }
+    }
+  }
+}
+.remarkArea {
+  grid-area: remarkArea;
+  padding: 16px 16px 0;
+  * {
+    width: 100%;
+  }
+}
+.confirmArea {
+  grid-area: confirmArea;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 32px;
+  button{
+    align-self: flex-end;
+  }
 }
