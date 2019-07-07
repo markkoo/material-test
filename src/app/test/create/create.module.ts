@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { CreateRoutingModule } from './create-routing.module';
 import { CreateComponent } from './create.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @NgModule({
   declarations: [CreateComponent],
@@ -13,7 +14,8 @@ import { CreateComponent } from './create.component';
     CreateRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    A11yModule
   ]
 })
 export class CreateModule { }

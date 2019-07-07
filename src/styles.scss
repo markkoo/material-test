@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -9,8 +9,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$candy-app-primary: mat-palette($mat-gray, 900);
-$candy-app-accent: mat-palette($mat-red, A200, A100, A400);
+$candy-app-primary: mat-palette($mat-blue, 600);
+$candy-app-accent: mat-palette($mat-teal, 800);
 // The warn palette is optional (defaults to red).
 $candy-app-warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
@@ -19,78 +19,136 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
-$custom-typography: mat-typography-config( $font-family: 'Roboto, Arial, sans-serif', $headline: mat-typography-level(32px, 48px, 700), $body-1: mat-typography-level(16px, 24px, 500));
+$custom-typography: mat-typography-config(
+  $font-family: "Roboto, Arial, sans-serif",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
 @include angular-material-typography($custom-typography);
+
+// .mat-button-toggle-checked {
+//   background-color: mat-color($candy-app-accent);
+//   color: mat-color($candy-app-accent, default-contrast);
+// }
+
 body {
-    font-family: Roboto, Arial, sans-serif;
+  font-family: Roboto, Arial, sans-serif;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .26);
-    background-clip: initial;
+  background-color: rgba(0, 0, 0, 0.26);
+  background-clip: initial;
 }
 
 ::-webkit-scrollbar-corner {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 mat-card,
 [mat-raised-button] {
-    border-radius: 0 !important;
+  border-radius: 2px !important;
 }
 
-.global-newEnquiryAddressMenu{
-    font-size: 12px;
-    padding:4px 0;
-    .address{
-        padding: 8px 8px 4px;
-        cursor: pointer;
-        &:hover{
-            background: rgba(0,0,0,.04);
-        }
-        span{
-            display: block;
-        }
+.global-newEnquiryAddressMenu {
+  font-size: 12px;
+  padding: 4px 0;
+  .address {
+    padding: 8px 8px 4px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
     }
+    span {
+      display: block;
+    }
+  }
 }
-.preLine{
-    white-space: pre-line;
+.preLine {
+  white-space: pre-line;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex {
-    padding: 0 !important;
-}
-.mat-form-field-appearance-fill .mat-form-field-infix {
-    padding: 0 0 10.5px 8px !important;
-    border-top-width: 7.5px;
-}
-.mat-form-field-appearance-fill .mat-form-field-underline::before {
-    background-color: rgba(0, 0, 0, 0) !important;
-}
-.mat-form-field-wrapper {
-    margin-bottom: -8px;
-}
-.mat-form-field-subscript-wrapper{
-    margin-top:2px !important;
-}
-input.mat-input-element,
-textarea.mat-input-element,
-select.mat-input-element {
+$gapBetweenLabel: 10px;
+$gapBetweenUnderline: 8px;
+$upLabelFontSize: 12px;
+$downLabelFontSize: 13px;
+$valueFontSize: 13px;
+$bottomGap: 16px;
+mat-form-field {
+  &.noUnderline {
+    .mat-form-field-underline:before {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+  &.small {
     font-size: 14px;
+
+    &[appearance="fill"],
+    &[appearance="outline"] {
+      .mat-form-field-infix {
+        padding: $gapBetweenLabel 0 $gapBetweenUnderline !important;
+      }
+    }
+    &[appearance="fill"]{
+      &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+      &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        font-size: 16px !important; // focus 后会scale 0.75 = 12px, 我没有改transform, 因为translate 和 scale 都有value
+      }
+      .mat-form-field-label {
+        font-size: $valueFontSize; //default 是 16px, 现在需要小, 没给important是因为要 inherit
+      }
+      &.noLabel {
+        .mat-form-field-flex {
+          padding: 0 8px !important;
+          .mat-form-field-infix {
+            border-top-width: 0;
+          }
+        }
+        mat-icon {
+          transform: translateY(5px);
+        }
+      }
+    }
+    &[appearance="outline"]{
+      &.noLabel {
+        .mat-form-field-flex {
+          //   padding: 0 8px !important;
+          .mat-form-field-infix {
+            border-top-width: 0;
+          }
+        }
+      }
+      .mat-form-field-label {
+        transform: translateY(-6px);
+      }
+      mat-icon {
+        transform: translateY(-3px);
+      }
+      .mat-select-trigger{
+        transform: translateY(-4px);
+      }
+      .mat-select-arrow-wrapper {
+        transform: translateY(-1px);
+      }
+    }
+  }
+  textarea[cdktextareaautosize] {
+    overflow: hidden; //TODO: bug, 单元测试没问题 for autoresize
+    line-height: 1.25;
+  }
 }

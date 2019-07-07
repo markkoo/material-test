@@ -1,0 +1,141 @@
+section {
+  padding: 30px;
+  display: block;
+  max-width: 500px;
+  background: white;
+}
+
+$gapBetweenLabel: 10px;
+$gapBetweenUnderline: 8px;
+$upLabelFontSize: 12px;
+$downLabelFontSize: 13px;
+$valueFontSize: 13px;
+$bottomGap: 16px;
+.grid {
+  display: grid;
+  grid-gap: 4px;
+}
+mat-form-fieldX {
+  display: block !important;
+  &.noUnderline{
+    .mat-form-field-underline:before {
+        background-color:rgba(0, 0, 0, 0);
+    }
+  }
+  &.small {
+    font-size: 14px;
+
+    &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+    &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+      font-size: 16px !important; // focus 后会scale 0.75 = 12px, 我没有改transform, 因为translate 和 scale 都有value
+    }
+    .mat-form-field-label {
+      font-size: $valueFontSize; //default 是 16px, 现在需要小, 没给important是因为要 inherit
+    }
+
+    &[appearance="fill"],
+    &[appearance="outline"] {
+      .mat-form-field-infix {
+        padding: $gapBetweenLabel 0 $gapBetweenUnderline !important;
+      }
+    }
+    &[appearance="fill"].noLabel {
+      .mat-form-field-flex {
+        padding: 0 8px !important;
+        .mat-form-field-infix {
+          border-top-width: 0;
+        }
+      }
+      mat-icon {
+        transform: translateY(5px);
+      }
+    }
+    &[appearance="outline"].noLabel {
+      .mat-form-field-flex {
+        //   padding: 0 8px !important;
+        .mat-form-field-infix {
+          border-top-width: 0;
+        }
+      }
+      mat-icon {
+        transform: translateY(3px);
+      }
+    }
+  }
+}
+
+.smallAccessor {
+  mat-form-field {
+    line-height: 1 !important; // default 1.125, 我看这样很难算准, 这里由我控制
+    &.mat-form-field-appearance-legacy {
+      &.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+      &.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+        font-size: 16px !important; // focus 后会scale 0.75 = 12px, 我没有改transform, 因为translate 和 scale 都有value
+      }
+      .mat-form-field-wrapper {
+        padding-bottom: $bottomGap !important; //bottom gap
+        .mat-form-field-flex {
+          // 为什么不写font size 在这里是因为select option 会拿这里的size 作为option的size,
+          // 我需要选择option是小的, 因为是空间问题,不是option问题
+          .mat-form-field-prefix,
+          .mat-form-field-suffix {
+            font-size: $valueFontSize !important;
+            height: $valueFontSize !important;
+          }
+          .mat-form-field-infix {
+            border-top-width: $upLabelFontSize !important;
+            padding: $gapBetweenLabel 0 $gapBetweenUnderline !important; //padding top高是label的距离, padding-bottom 是underline的距离
+            input {
+              display: block; //default 是 inherit, 这会造成height 不准
+              margin-top: 0 !important;
+              height: $valueFontSize !important;
+              font-size: $valueFontSize !important;
+            }
+            mat-select {
+              display: block; //default 是 inherit, 这会造成height 不准
+              height: $valueFontSize !important;
+              .mat-select-trigger {
+                display: block; //default 是 inline table, 这会造成字不在中央, 注意这个, 很危险!
+                height: $valueFontSize !important;
+                .mat-select-value {
+                  font-size: $valueFontSize !important;
+                }
+              }
+            }
+            textarea {
+              margin: 0 !important; //input 内容是vertical middle, textarea 是top. 错的人是textarea, 所以给padding
+              padding: 0 !important;
+              font-size: $valueFontSize !important;
+              line-height: 1.25 !important; //for autoresize
+              overflow: hidden; //TODO: bug, 单元测试没问题
+            }
+            .mat-form-field-label-wrapper {
+              padding-top: $upLabelFontSize !important;
+              top: -$upLabelFontSize !important;
+              .mat-form-field-label {
+                display: block; //default 是 inherit, 这会造成height 不准
+                top: $upLabelFontSize + $gapBetweenLabel !important; //TODO: 找不到原因~ 线索是input给了13height, 但是最终却比较高
+                font-size: $valueFontSize; //default 是 16px, 现在需要小, 没给important是因为要 inherit
+              }
+            }
+          }
+        }
+        .mat-form-field-underline {
+          bottom: $bottomGap !important;
+        }
+        .mat-form-field-subscript-wrapper {
+          margin-top: 0px !important;
+          top: calc(
+            100% - #{$bottomGap} + 2px
+          ) !important; //bottom font position 是从top 算起的, 不过为了有一点点的gap, 需要减少一点
+          .mat-form-field-hint-wrapper {
+          }
+        }
+      }
+    }
+  }
+  mat-checkbox,
+  mat-radio-button {
+    font-size: $valueFontSize;
+  }
+}

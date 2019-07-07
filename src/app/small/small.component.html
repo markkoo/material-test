@@ -1,0 +1,135 @@
+<section class="grid">
+
+    <p>
+        <mat-form-field appearance="legacy" class="small">
+            <mat-label>Legacy form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard" class="small" >
+            <mat-label>Standard form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill" class="small noUnderline">
+            <mat-label>Fill form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill" class="small noLabel">
+            <!-- <mat-label>Fill form field</mat-label> -->
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" class="small" >
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" class="small noLabel" >
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </p>
+
+    <mat-form-field appearance="legacy">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" value="hello" [formControl]="email" required>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of ['hello','b']" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+        <span matPrefix>$&nbsp;</span>
+        <button mat-icon-button matSuffix>
+            <mat-icon>visibility_off</mat-icon>
+        </button>
+        <!-- <span matSuffix>.00</span> -->
+        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field hintLabel="Max 10 characters">
+        <input matInput #input maxlength="10" placeholder="Enter some input">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Select me">
+            <mat-option value="option">Option</mat-option>
+        </mat-select>
+        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="floatLabel">
+        <mat-radio-button value="auto">Auto</mat-radio-button>
+        <mat-radio-button value="always">Always</mat-radio-button>
+        <mat-radio-button value="never">Never</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="dp1" placeholder="Completely disabled" disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+        <mat-datepicker #dp1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+    <mat-checkbox>Check me!</mat-checkbox>
+
+    <mat-form-field appearance="legacy">
+        <input matInput placeholder="Enter your email" [formControl]="email" required value="hello">
+        <span matPrefix>h</span>
+        <span matSuffix>.00</span>
+        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <!-- must put cdkAutosizeMinRows="1" will get min-height 18px, no depand on font-size, can prevent the overflow scrollbar show -->
+        <textarea cdkTextareaAutosize matInput placeholder="Textarea" value="hello" [formControl]="email" required></textarea>
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-select placeholder="Select" value="hello" [formControl]="email" required>
+            <mat-option value="undefined">hello</mat-option>
+            <mat-option value="hello">apple</mat-option>
+            <mat-option value="hello1">apple</mat-option>
+            <mat-option value="hello1">apple</mat-option>
+            <mat-option value="hello1">apple</mat-option>
+            <mat-option value="hello1">apple</mat-option>
+        </mat-select>
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+    </mat-form-field>
+</section>

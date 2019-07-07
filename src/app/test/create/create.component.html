@@ -1,58 +1,83 @@
-<div class="flexArea">
-    <div class="flexLeftArea">
-        <button mat-icon-button>
-            <mat-icon>close</mat-icon>
-        </button>
-    </div>
-    <div class="flexRightArea">
-        <header>
-            <mat-form-field appearance="outline" class="type">
-                <mat-label>Select Type</mat-label>
-                <mat-select placeholder="" value="company">
-                    <mat-option value="company">Company</mat-option>
-                    <mat-option value="individu">Individu</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <div class="saveButton">
-                <button mat-raised-button color="accent">Save</button>
-            </div>
-        </header>
-        <section>
-            <div class="companyForm">
-                <div class="headerTitle">
-                    <span>Company</span>
+<header>
+    <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+    </button>
+    <h2 class="mat-h2 title">Create New Customer</h2>
+</header>
+<section class="bodyArea">
+    <button (click)="disabled = !disabled">asd</button>
+    <mat-radio-group aria-label="Select an option" color="primary" value="1">
+        <mat-radio-button value="1">Company</mat-radio-button>
+        <mat-radio-button value="2">Individu</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-horizontal-stepper [linear]="false" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Company Info</ng-template>
+                <div cdkTrapFocus [cdkTrapFocusAutoCapture]="true" class="bigGrid">
+                    <div class="grid">
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Company Name</mat-label>
+                            <input cdkFocusInitial matInput placeholder="Mark Koo" required>
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Tel</mat-label>
+                            <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" matInput 
+                            placeholder="07 5566 778/779&#10;07 5566 778 Ext:110" required></textarea>
+                            <mat-icon matSuffix matTooltipClass="preLine" matTooltip="Example
+                                        07 5566 778/779
+                                        07 5566 778 EXT:110">help_outline</mat-icon>
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Fax</mat-label>
+                            <input matInput placeholder="07-5566 778">
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Email</mat-label>
+                            <input [formControl]="email" matInput placeholder="example@company.com">
+                            <mat-error>Invalid email</mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Registration Number</mat-label>
+                            <input matInput placeholder="ABC 132456789">
+                        </mat-form-field>
+    
+                        <div class="buttonArea">
+                            <button mat-raised-button matStepperNext color="primary">Continue</button>
+                            <button mat-button>Cancel</button>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Remark</mat-label>
+                            <textarea cdkTextareaAutosize cdkAutosizeMinRows="8" matInput></textarea>
+                        </mat-form-field>
+                    </div>
                 </div>
-
-                <div class="col2Grid">
-
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Name" required>
-                        <mat-error>asd</mat-error>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Address</ng-template>
+                <div class="grid">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Address 1</mat-label>
+                        <input matInput placeholder="No 12, Kawasan Perindustrian Tebrau">
                     </mat-form-field>
-
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Registration Number">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Address 2</mat-label>
+                        <input matInput placeholder="81100 Johor Bahru, Malaysia">
                     </mat-form-field>
-
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Email">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Fax">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="fill">
-                        <textarea matInput placeholder="Phone"></textarea>
-                        <mat-icon matSuffix matTooltipClass="preLine" matTooltip="Info about the action
-                        a tooltip when focused o">help_outline</mat-icon>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="fill">
-                        <textarea matInput placeholder="Address"></textarea>
-                    </mat-form-field>
-
-                    <mat-form-field appearance="fill">
+                    
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Country</mat-label>
                         <mat-select placeholder="Country">
                             <mat-option value="option">Malaysia</mat-option>
                             <mat-option value="option">Singapore</mat-option>
@@ -60,7 +85,8 @@
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>State</mat-label>
                         <mat-select placeholder="State">
                             <mat-option value="option">Johor</mat-option>
                             <mat-option value="option">Johor</mat-option>
@@ -68,82 +94,120 @@
                         </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Postcode">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>City/Town</mat-label>
+                        <input matInput placeholder="Johor Bahru">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Postcode</mat-label>
+                        <input matInput placeholder="81100">
+                    </mat-form-field>
+
+                    <div class="header" style="display:flex;">
+                        <mat-checkbox (click)="additionalShippingInfo = !additionalShippingInfo" color="primary">Shipping Address</mat-checkbox>
+                    </div>
+
+                    <ng-container [@slideUpDown]="additionalShippingInfo">
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Address 1</mat-label>
+                            <input matInput placeholder="No 12, Kawasan Perindustrian Tebrau" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Address 2</mat-label>
+                            <input matInput placeholder="81100 Johor Bahru, Malaysia">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Country</mat-label>
+                            <mat-select placeholder="Country" required>
+                                <mat-option value="option">Malaysia</mat-option>
+                                <mat-option value="option">Singapore</mat-option>
+                                <mat-option value="option">Taiwan</mat-option>
+                            </mat-select>
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>State</mat-label>
+                            <mat-select placeholder="State" required>
+                                <mat-option value="option">Johor</mat-option>
+                                <mat-option value="option">Johor</mat-option>
+                                <mat-option value="option">Johor</mat-option>
+                            </mat-select>
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>City/Town</mat-label>
+                            <input matInput placeholder="Johor Bahru">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Postcode</mat-label>
+                            <input matInput placeholder="81100" required>
+                            <mat-error>Required</mat-error>
+                        </mat-form-field>
+                    </ng-container>
+                    <div class="buttonArea">
+                        <button mat-raised-button matStepperNext color="primary">Continue</button>
+                        <button mat-button matStepperPrevious>Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step *ngIf="disabled">
+            <ng-template matStepLabel>Contact Person</ng-template>
+            <div class="bigGrid">
+                <div class="grid">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Mark Koo">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Phone</mat-label>
+                        <textarea cdkTextareaAutosize cdkAutosizeMinRows="3" matInput 
+                        placeholder="07 5566 778/779&#10;07 5566 778 Ext:110"></textarea>
+                        <mat-icon matSuffix matTooltipClass="preLine" matTooltip="Example
+                                    07 5566 778/779
+                                    07 5566 778 EXT:110">help_outline</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Fax</mat-label>
+                        <input matInput placeholder="07-5566 778">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="example@company.com">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Department</mat-label>
+                        <input matInput placeholder="Sale Department">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Position</mat-label>
+                        <input matInput placeholder="Senior">
+                    </mat-form-field>
+
+                    <div class="buttonArea">
+                        <button mat-raised-button matStepperNext color="primary">Create Customer</button>
+                        <button mat-button>Cancel</button>
+                    </div>
+                </div>
+                <div class="grid">
+                    <mat-form-field appearance="outline" class="small">
+                        <mat-label>Remark</mat-label>
+                        <textarea cdkTextareaAutosize cdkAutosizeMinRows="8" matInput></textarea>
                     </mat-form-field>
                 </div>
             </div>
-            <div class="contactPersonForm">
-                <div class="headerTitle">
-                    <span>Contact Person</span>
-                </div>
+        </mat-step>
+    </mat-horizontal-stepper>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Placeholder" [disabled]="true">
-                </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Placeholder">
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Fax</mat-label>
-                    <input matInput placeholder="Placeholder">
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Phone</mat-label>
-                    <textarea matInput placeholder="Placeholder" [disabled]="true"></textarea>
-                    <mat-icon matSuffix>help_outline</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Department</mat-label>
-                    <input matInput placeholder="Placeholder">
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Position</mat-label>
-                    <input matInput placeholder="Placeholder">
-                </mat-form-field>
-            </div>
-            <div class="shippingForm">
-                <div class="headerTitle">
-                    <span>Shipping</span>
-                </div>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Address</mat-label>
-                    <textarea matInput placeholder="Placeholder"></textarea>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Country</mat-label>
-                    <mat-select placeholder="Country">
-                        <mat-option value="option">Malaysia</mat-option>
-                        <mat-option value="option">Singapore</mat-option>
-                        <mat-option value="option">Taiwan</mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>State</mat-label>
-                    <mat-select placeholder="State">
-                        <mat-option value="option">Johor</mat-option>
-                        <mat-option value="option">Johor</mat-option>
-                        <mat-option value="option">Johor</mat-option>
-                    </mat-select>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Postcode</mat-label>
-                    <input matInput placeholder="Placeholder">
-                </mat-form-field>
-
-                <mat-checkbox>Use This for Shipping</mat-checkbox>
-            </div>
-        </section>
-    </div>
-</div>
+</section>

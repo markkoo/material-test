@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'test' },
+  { path: '', pathMatch: 'full', redirectTo: 'small' },
   {
     path : 'chip-autocomplete',
     component : ChipAutocompleteComponent
@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path : 'overlay',
     loadChildren: () => import('./overlay/overlay.module').then(mod => mod.OverlayModule)
+  },
+  {
+    path : 'small',
+    loadChildren: () => import('./small/small.module').then(mod => mod.SmallModule)
+  },
+  {
+    path : 'simple',
+    loadChildren: () => import('./simple/simple.module').then(mod => mod.SimpleModule)
   }
 ];
 
