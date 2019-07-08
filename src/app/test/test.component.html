@@ -1,34 +1,46 @@
 <div class="fixedArea">
     <div class="bodyArea">
-        <h4 class="mat-h2">New Enquiry</h4>
+        <div class="mainHeader">
+            <h4 class="mat-h2 title">New Enquiry1</h4>
+            <button mat-icon-button>
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
         <div class="container">
             <mat-card class="customerInfoArea">
                 <header>
-                    <button mat-mini-fab>
-                        <mat-icon>add</mat-icon>
-                    </button>
                     <div class="mat-h3 title">Customer Info</div>
                 </header>
                 <section>
-                    <mat-form-field floatLabel="always">
-                        <mat-chip-list #chipList>
-                            <mat-chip>
-                                Company Name
-                                <mat-icon matChipRemove>cancel</mat-icon>
-                            </mat-chip>
-                            <input placeholder="Company Name" #fruitInput [matChipInputFor]="chipList">
-                        </mat-chip-list>
-                    </mat-form-field>
-                    <!-- <dl class="mat-small">
-                                <dt>Name</dt>
-                                <dd>pusat komputer koo & keat</dd>
-                                <dt>Phone</dt>
-                                <dd>07-1234567</dd>
-                                <dt>Email</dt>
-                                <dd>support@stooges.com.my</dd>
-                            </dl> -->
+                    <div class="flex">
+                        <mat-form-field floatLabel="always">
+                            <mat-chip-list #chipList>
+                                <mat-chip>
+                                    Customer Name
+                                    <mat-icon matChipRemove>cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="Company Name" #fruitInput [matChipInputFor]="chipList">
+                            </mat-chip-list>
+                        </mat-form-field>
+                        <button mat-icon-button class="mat-elevation-z2">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>pusat komputer koo & keat</dd>
+                        <dt>Phone</dt>
+                        <dd>07-1234567</dd>
+                        <dt>Email</dt>
+                        <dd>support@stooges.com.my</dd>
+                        <dt>Grade</dt>
+                        <dd>End User
+                            <button mat-icon-button>
+                                <mat-icon>edit</mat-icon>
+                            </button></dd>
+                    </dl>
 
-                    <mat-form-field>
+                    <!-- <mat-form-field>
                         <input matInput placeholder="Name">
                     </mat-form-field>
 
@@ -39,7 +51,7 @@
 
                     <mat-form-field>
                         <input matInput placeholder="Email">
-                    </mat-form-field>
+                    </mat-form-field> -->
                 </section>
             </mat-card>
             <mat-card class="shippingArea">
@@ -48,7 +60,7 @@
                     <mat-slide-toggle></mat-slide-toggle>
                 </header>
                 <section>
-                    <button mat-raised-button color="warm" [disabled]="false" [matMenuTriggerFor]="addressMenu">Choose Address</button>
+                    <!-- <button mat-raised-button color="warm" [disabled]="false" [matMenuTriggerFor]="addressMenu">Choose Address</button>
                     <mat-menu #addressMenu="matMenu" xPosition="before" class="global-newEnquiryAddressMenu">
                         <div mat-ripple class="address" (click)="mark = 1">
                             <span>No 12, Kawasan Perindustrian Tebrau</span>
@@ -58,19 +70,26 @@
                             <span>No 22, Kawasan Perindustrian Tebrau</span>
                             <span>81100 Johor Bahru</span>
                         </div>
-                    </mat-menu>
-                    <!-- <dl class="mat-small">
-                                <dt>Address 1</dt>
-                                <dd class="preLine">No 22, Kawasan Perindustrian Tebrau
-                                    81100 Johor Bahru</dd>
-                                <dt>Country</dt>
-                                <dd>Malaysia</dd>
-                                <dt>State</dt>
-                                <dd>Johor</dd>
-                                <dt>Postcode</dt>
-                                <dd>81100</dd>
-                            </dl> -->
-                    <div class="grid">
+                    </mat-menu> -->
+                    <dl>
+                        <dt>Address 1</dt>
+                        <dd>No 22, Kawasan Perindustrian Tebrau</dd>
+                        <dt>Address 2</dt>
+                        <dd>81100 Johor Bahru</dd>
+                        <dt>Country</dt>
+                        <dd>Malaysia</dd>
+                        <dt>State</dt>
+                        <dd>Johor</dd>
+                        <dt>City/Town</dt>
+                        <dd>Johor Bahru</dd>
+                        <dt>Postcode</dt>
+                        <dd>81100
+                            <button mat-icon-button>
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </dd>
+                    </dl>
+                    <!-- <div class="grid">
                         <mat-form-field>
                             <textarea matInput placeholder="Address" rows="2"></textarea>
                         </mat-form-field>
@@ -94,7 +113,7 @@
                         <mat-form-field>
                             <input matInput placeholder="Postcode">
                         </mat-form-field>
-                    </div>
+                    </div> -->
                 </section>
             </mat-card>
             <mat-card class="historyArea">

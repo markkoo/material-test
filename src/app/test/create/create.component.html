@@ -4,8 +4,7 @@
     </button>
     <h2 class="mat-h2 title">Create New Customer</h2>
 </header>
-<section class="bodyArea">
-    <button (click)="disabled = !disabled">asd</button>
+<section class="bodyArea">  
     <mat-radio-group aria-label="Select an option" color="primary" value="1">
         <mat-radio-button value="1">Company</mat-radio-button>
         <mat-radio-button value="2">Individu</mat-radio-button>
@@ -47,6 +46,15 @@
                         <mat-form-field appearance="outline" class="small">
                             <mat-label>Registration Number</mat-label>
                             <input matInput placeholder="ABC 132456789">
+                        </mat-form-field>
+                    
+                        <mat-form-field appearance="outline" class="small">
+                            <mat-label>Grade</mat-label>
+                            <mat-select placeholder="Grade" value="1">
+                                <mat-option value="1">End User</mat-option>
+                                <mat-option value="2">Dealer</mat-option>
+                                <mat-option value="3">Wholesale</mat-option>
+                            </mat-select>
                         </mat-form-field>
     
                         <div class="buttonArea">
@@ -156,7 +164,7 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step *ngIf="disabled">
+        <mat-step>
             <ng-template matStepLabel>Contact Person</ng-template>
             <div class="bigGrid">
                 <div class="grid">

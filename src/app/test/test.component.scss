@@ -3,17 +3,33 @@
 :host {
   display: block;
   transform: translate(0);
-  height:100%;
+  height: 100%;
 }
 
-.fixedArea{
+.fixedArea {
   position: fixed;
   background: #fafafa;
-  top:0;
+  top: 0;
   left: 0;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
+}
+
+.mainHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  .title{
+    margin:0;
+  }
+  button{
+    color:gray;
+    &:hover{
+      color:inherit;
+    }
+  }
 }
 
 $blue: #536dfe;
@@ -28,19 +44,16 @@ mat-card {
 %oneThird {
   header {
     padding: 0 16px;
-    height: 56px;
+    height: 48px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    button {
-      margin-right: 10px;
-    }
     .title {
       margin: 0;
     }
   }
   section {
-    height: 309px; //220px
+    height: 236px; //220px
     overflow-y: auto;
     box-sizing: border-box;
   }
@@ -61,18 +74,39 @@ mat-card {
   grid-area: customerInfoArea;
   @extend %oneThird;
   section {
+    font-size: 14px;
     padding: 16px;
-    .mat-form-field {
-      width: 100%;
+    .flex{
+      display: flex;
+      align-items: center;
+      .mat-form-field {
+        flex:100%;
+        width: 100%;
+      }
+      button{
+        margin-left: 8px;
+        margin-bottom: 5px;
+        transform: translateX(8px);
+        background: white;
+        color:gray;
+      }
     }
     dl {
       display: flex;
       flex-wrap: wrap;
       dt {
-        flex: 30%;
+        flex: 60px;
+        padding: 4px 0;
       }
       dd {
-        flex: 70%;
+        flex: calc(100% - 60px);
+        padding: 4px 0;
+        position: relative;
+        button {
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
+        }
       }
     }
   }
@@ -85,17 +119,23 @@ mat-card {
   }
   section {
     padding: 16px 16px 16px;
+    font-size: 14px;
     dl {
       display: flex;
       flex-wrap: wrap;
       margin-top: 16px;
       dt {
-        flex: 30%;
+        flex: 80px;
+        padding: 4px 0;
       }
       dd {
-        flex: 70%;
-        &.preLine {
-          white-space: pre-line;
+        flex: calc(100% - 80px);
+        padding: 4px 0;
+        position: relative;
+        button {
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
         }
       }
     }
@@ -273,7 +313,7 @@ mat-card {
   display: flex;
   justify-content: flex-end;
   padding: 16px 32px;
-  button{
+  button {
     align-self: flex-end;
   }
 }
