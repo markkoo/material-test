@@ -1,4 +1,4 @@
-:host {
+[cdk-scrollable] {
     display: block;
     height:500px;
     overflow: auto;
@@ -13,7 +13,8 @@
   }
   
 .asd {
-    background: gray;
+    background: white;
     display: block;
     width: 100%;
+    border:1px solid red;
 }

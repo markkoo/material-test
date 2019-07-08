@@ -7,11 +7,6 @@ import { RotiniPanelComponent } from './rotini-panel/rotini-panel.component';
   selector: 'app-overlay',
   templateUrl: './overlay.component.html',
   styleUrls: ['./overlay.component.scss'],
-  // tslint:disable-next-line: no-host-metadata-property
-  host: {
-// tslint:disable-next-line: object-literal-key-quotes
-    'cdk-scrollable': ''
-  }
 })
 export class OverlayComponent implements OnInit {
 
@@ -29,30 +24,43 @@ export class OverlayComponent implements OnInit {
 
     const positionStrategy = this.overlay.position()
       .flexibleConnectedTo(this.originElem)
+      // .withFlexibleDimensions(false)
       .withPositions([
         {
-          originX: 'center',
+          originX: 'end',
           originY: 'top',
-          overlayX: 'center',
+          overlayX: 'start',
           overlayY: 'bottom'
         },
         {
-          originX: 'center',
+          originX: 'end',
           originY: 'bottom',
-          overlayX: 'center',
+          overlayX: 'start',
           overlayY: 'top',
+        },
+        {
+          originX: 'start',
+          originY: 'top',
+          overlayX: 'end',
+          overlayY: 'bottom'
+        },
+        {
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'end',
+          overlayY: 'top'
         }
       ])
-      // .withFlexibleDimensions(false)
       .withPush(false);
 
     const scrollStrategy = this.overlay.scrollStrategies.reposition();
 
-    config.width = '200px';
-    config.height = '200px';
+    config.minWidth = '300px';
+    config.width = '300px';
+    config.minHeight = '16px';
     config.positionStrategy = positionStrategy;
     config.scrollStrategy = scrollStrategy;
-    config.hasBackdrop = true;
+    config.hasBackdrop = false;
     config.backdropClass = 'transparent-backdrop';
 
     const overlayRef = this.overlay.create(config);
