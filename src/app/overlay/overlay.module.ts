@@ -1,3 +1,4 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MaterialModule } from './../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { PortalModule } from '@angular/cdk/portal';
     OverlayRoutingModule,
     MaterialModule,
     NgOverlayModule,
-    PortalModule
+    PortalModule,
+    ScrollingModule
   ],
   entryComponents: [
     RotiniPanelComponent

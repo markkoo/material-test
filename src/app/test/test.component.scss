@@ -1,12 +1,8 @@
 @import "~@angular/material/theming";
 
+// #region :host and some component overwrite
 :host {
   display: block;
-  transform: translate(0);
-  height: 100%;
-}
-
-.fixedArea {
   position: fixed;
   background: #fafafa;
   top: 0;
@@ -16,40 +12,28 @@
   overflow-y: auto;
 }
 
-.mainHeader{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-  .title{
-    margin:0;
-  }
-  button{
-    color:gray;
-    &:hover{
-      color:inherit;
-    }
-  }
+mat-card {
+  padding: 0;
 }
+// #endregion
 
+// #region scss varible and extend
 $blue: #536dfe;
 $green: #b2ff59;
 $orange: #ffab40;
 $red: #ff5252;
 
-mat-card {
-  padding: 0;
-}
-
 %oneThird {
   header {
     padding: 0 16px;
     height: 48px;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     .title {
       margin: 0;
+      font-weight: 500;
     }
   }
   section {
@@ -58,15 +42,46 @@ mat-card {
     box-sizing: border-box;
   }
 }
+%formGrayButton {
+  button {
+    position: absolute;
+    right: -8px;
+    bottom: -2px;
+    color: gray;
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+// #endregion
 
-.bodyArea {
+// #region component
+.gridAreas {
   padding: 16px 32px 64px 16px;
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 16px;
-    grid-template-areas: "customerInfoArea shippingArea historyArea" "itemsArea itemsArea itemsArea" "remarkArea confirmArea confirmArea";
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 16px;
+  grid-template-areas:
+    "headerArea headerArea headerArea"
+    "customerInfoArea shippingArea historyArea"
+    "itemsArea itemsArea itemsArea"
+    "remarkArea confirmArea confirmArea";
+}
+
+.mainHeader {
+  grid-area: headerArea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    margin: 0;
+  }
+  button {
+    color: gray;
+    &:hover {
+      color: inherit;
+    }
   }
 }
 
@@ -76,38 +91,24 @@ mat-card {
   section {
     font-size: 14px;
     padding: 16px;
-    .flex{
-      display: flex;
+    .grid {
+      display: grid;
+      grid-template-columns: auto 40px;
+      grid-gap: 0 8px;
       align-items: center;
       .mat-form-field {
-        flex:100%;
         width: 100%;
       }
-      button{
-        margin-left: 8px;
-        margin-bottom: 5px;
-        transform: translateX(8px);
-        background: white;
-        color:gray;
+      button {
+        transform: translate(8px, 0px);
       }
     }
     dl {
-      display: flex;
-      flex-wrap: wrap;
-      dt {
-        flex: 60px;
-        padding: 4px 0;
-      }
-      dd {
-        flex: calc(100% - 60px);
-        padding: 4px 0;
-        position: relative;
-        button {
-          position: absolute;
-          right: -8px;
-          bottom: -2px;
-        }
-      }
+      display: grid;
+      grid-auto-columns: 10px auto; 
+      grid-gap: 6px 0;
+      position: relative;
+      @extend %formGrayButton;
     }
   }
 }
@@ -118,35 +119,15 @@ mat-card {
     justify-content: space-between;
   }
   section {
-    padding: 16px 16px 16px;
     font-size: 14px;
+    padding: 16px;
     dl {
-      display: flex;
-      flex-wrap: wrap;
       margin-top: 16px;
-      dt {
-        flex: 80px;
-        padding: 4px 0;
-      }
-      dd {
-        flex: calc(100% - 80px);
-        padding: 4px 0;
-        position: relative;
-        button {
-          position: absolute;
-          right: -8px;
-          bottom: -2px;
-        }
-      }
-    }
-    .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 0 16px;
-      margin-top: 26px;
-      *:nth-child(1) {
-        grid-column-end: span 2;
-      }
+      grid-template-columns: 80px auto;
+      grid-gap: 6px 0;
+      position: relative;
+      @extend %formGrayButton;
     }
   }
 }
@@ -317,3 +298,4 @@ mat-card {
     align-self: flex-end;
   }
 }
+// #endregion

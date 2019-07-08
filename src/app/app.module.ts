@@ -1,3 +1,4 @@
+import { OverlayModule } from './overlay/overlay.module';
 import { TestComponent } from './test/test.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,8 @@ import { ChipAutocompleteComponent } from './chip-autocomplete/chip-autocomplete
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    ScrollingModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

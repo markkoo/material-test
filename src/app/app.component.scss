@@ -39,6 +39,10 @@ h1.example-app-name {
   width: 260px;
 }
 
+mat-sidenav-content{
+  transform: translate(0);
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }

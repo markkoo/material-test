@@ -6,7 +6,12 @@ import { RotiniPanelComponent } from './rotini-panel/rotini-panel.component';
 @Component({
   selector: 'app-overlay',
   templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css']
+  styleUrls: ['./overlay.component.scss'],
+  // tslint:disable-next-line: no-host-metadata-property
+  host: {
+// tslint:disable-next-line: object-literal-key-quotes
+    'cdk-scrollable': ''
+  }
 })
 export class OverlayComponent implements OnInit {
 
@@ -16,7 +21,7 @@ export class OverlayComponent implements OnInit {
   // @ViewChild('tortelliniTemplate', { static: true }) tortelliniTemplate: TemplatePortalDirective;
 
   constructor(
-    public overlay: Overlay,
+    public overlay: Overlay
   ) { }
 
   click() {
@@ -38,7 +43,8 @@ export class OverlayComponent implements OnInit {
           overlayY: 'top',
         }
       ])
-      .withPush(true);
+      // .withFlexibleDimensions(false)
+      .withPush(false);
 
     const scrollStrategy = this.overlay.scrollStrategies.reposition();
 
